@@ -1,0 +1,85 @@
+header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+    padding: 0 5%; 
+    height: 56px;
+    background: rgba(250,250,248,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    transition: box-shadow 0.3s;
+}
+
+header .wrapper {
+    margin: 0 auto;
+    width: 95%;
+    max-width: 1340px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav { display: flex; align-items: center; gap: 6px; }
+nav a {
+    text-decoration: none; color: var(--ink-2); font-size: 14px; font-weight: 400;
+    padding: 6px 14px; border-radius: 100px;
+    transition: background 0.15s, color 0.15s;
+}
+
+nav a:hover { background: var(--surface-2); color: var(--ink); }
+
+.logo {
+    font-size: 24px;
+    text-decoration: none;
+    font-family: var(--font-d);
+    color: var(--ink);
+}
+
+header .wrapper .inner-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.bell {
+    width: 24px;
+    height: 24px;
+    background-color: #8b8b8b;
+    -webkit-mask: url("../../Images/Icons/mdi_bell-outline.svg") no-repeat center;
+    mask: url("../../Images/Icons/mdi_bell-outline.svg") no-repeat center;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    transform-origin: top center;
+    cursor: pointer;
+}
+
+@keyframes bell-swing {
+    0%   { transform: rotate(0deg); }
+    15%  { transform: rotate(15deg); }
+    30%  { transform: rotate(-12deg); }
+    45%  { transform: rotate(10deg); }
+    60%  { transform: rotate(-8deg); }
+    75%  { transform: rotate(6deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.bell:hover {
+    background: var(--primary-gradient);
+    animation: bell-swing 0.8s ease;
+}
+
+.avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgb(235, 235, 235);
+}
+
+.nav-actions { display: flex; gap: 8px; }
+.btn { display: inline-flex; align-items: center; gap: 6px; height: 34px; padding: 7px 16px; border-radius: 100px; font-size: 13px; font-weight: 500; border: none; cursor: pointer; text-decoration: none; transition: all .15s; font-family: var(--font-b); }
+.btn-ghost { background: transparent; color: var(--ink-2); border: 1px solid var(--border-med); }
+.btn-ghost:hover { background: var(--surface-2); }
+.btn-primary { background: var(--accent); color: white; }
+.btn-primary:hover { background: var(--accent-dark); }
