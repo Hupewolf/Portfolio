@@ -22,9 +22,6 @@
             <div class="inner-hero-section container">
                 <div class="avatar-portrait">
                     <div class="avatar-letter"></div>
-                    <div class="avatar-edit-btn">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-                    </div>
                 </div>
 
                 <!-- Identity + actions -->
@@ -56,11 +53,7 @@
                     <p class="hero-bio">Đam mê phát triển sản phẩm Web với UX tốt và hiệu năng tối ưu. Luôn học hỏi và không ngừng cải thiện bản thân.</p>
 
                     <div class="hero-actions">
-                        
-                        <a href="#" class="btn-edit-sm">
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-                            Chỉnh sửa hồ sơ
-                        </a>
+
                     </div>
                 </div>
                 <div class="wrapper-hero-btn">
@@ -165,41 +158,34 @@
                             <div class="comp-grid">
                                 <div class="cc">
                                     <div class="cc-lbl">Kiến thức chuyên môn</div>
-                                    <div class="cc-g gA">A</div>
+                                    
                                     <div class="ctip"><ul><li>Nắm vững kiến thức nền tảng</li><li>Áp dụng tốt vào thực tế</li><li>Chủ động nghiên cứu thêm</li></ul></div>
                                 </div>
                                 <div class="cc">
                                     <div class="cc-lbl">Làm việc nhóm</div>
-                                    <div class="cc-g gB">B</div>
+                                    
                                     <div class="ctip"><ul><li>Phối hợp tốt với thành viên</li><li>Đóng góp tích cực trong team</li><li>Cần chủ động hơn</li></ul></div>
                                 </div>
                                 <div class="cc">
                                     <div class="cc-lbl">Tư duy sản phẩm</div>
-                                    <div class="cc-g gA">A</div>
+                                    
                                     <div class="ctip"><ul><li>Tư duy user-centric tốt</li><li>Đề xuất giải pháp sáng tạo</li><li>Hiểu vòng đời sản phẩm</li></ul></div>
                                 </div>
                                 <div class="cc">
                                     <div class="cc-lbl">Hiệu suất học tập</div>
-                                    <div class="cc-g gB">B</div>
+                                    
                                     <div class="ctip"><ul><li>Tiến bộ đều qua các tháng</li><li>Hoàn thành đủ bài tập</li><li>Cần tự học thêm ngoài giờ</li></ul></div>
                                 </div>
                                 <div class="cc">
                                     <div class="cc-lbl">Giải quyết vấn đề</div>
-                                    <div class="cc-g gA">A</div>
+                                    
                                     <div class="ctip"><ul><li>Phân tích vấn đề rõ ràng</li><li>Tìm giải pháp tối ưu</li><li>Debug hiệu quả</li></ul></div>
                                 </div>
                                 <div class="cc highlight">
                                     <div class="cc-lbl">Thái độ & Kỷ luật</div>
-                                    <div class="cc-g gS">S</div>
+                                    
                                     <div class="ctip"><ul><li>Tham gia đầy đủ các buổi họp</li><li>Hoàn thành 100% deadline</li><li>Chủ động nhận task & hỗ trợ</li><li>Tuân thủ quy định BCN</li><li>Tinh thần trách nhiệm cao</li></ul></div>
                                 </div>
-                            </div>
-                            <div class="g-bar">
-                                <div class="gb"><span style="color:var(--red);font-weight:700">D</span><span class="gd">Yếu</span></div>
-                                <div class="gb"><span style="color:var(--ink-3)">C</span><span class="gd">TB</span></div>
-                                <div class="gb"><span style="color:var(--amber)">B</span><span class="gd">Khá</span></div>
-                                <div class="gb"><span style="color:var(--accent-2)">A</span><span class="gd">Tốt</span></div>
-                                <div class="gb on">S<span class="gd">Xuất sắc</span></div>
                             </div>
                         </div>
                     </div>
@@ -210,13 +196,32 @@
                     <div class="card" id="projects">
                         <div class="ch">
                             <div class="ch-title">Dự Án Đã Thực Hiện</div>
-                            <a href="#" class="ch-link"><img src="../Images/Icons/basil_filter-outline.svg"></a>
+                            <div class="outer-filter">
+                                <div class="dropdown-filter" id="techFilter">
+                                    Công nghệ
+                                    <div class="down"></div>
+                                    <div class="dropdown-menu" id="techDropdown">
+                                        <div class="dropdown-item" data-tech="all">Tất cả</div>
+                                        <div class="dropdown-item" data-tech="react">React</div>
+                                        <div class="dropdown-item" data-tech="typescript">TypeScript</div>
+                                        <div class="dropdown-item" data-tech="tailwindcss">TailwindCSS</div>
+                                        <div class="dropdown-item" data-tech="nextjs">Next.js</div>
+                                        <div class="dropdown-item" data-tech="nodejs">Node.js</div>
+                                        <div class="dropdown-item" data-tech="mongodb">MongoDB</div>
+                                        <div class="dropdown-item" data-tech="firebase">Firebase</div>
+                                        <div class="dropdown-item" data-tech="materialui">Material UI</div>
+                                        <div class="dropdown-item" data-tech="python">Python</div>
+                                        <div class="dropdown-item" data-tech="fastapi">FastAPI</div>
+                                    </div>
+                                </div>
+                                <button class="filter"><img src="../Images/Icons/basil_filter-outline.svg"></button>
+                            </div>
                         </div>
                         <div class="proj-grid">
-                            <div class="pcard"><div class="pthumb pt1"></div><div class="pinfo"><div class="pname">BCN Portfolio Web</div><div class="pdesc">Website portfolio dành cho thành viên BCN Tech.</div><div class="ptags"><span class="ptag">React</span><span class="ptag">TypeScript</span><span class="ptag">TailwindCSS</span></div></div></div>
-                            <div class="pcard"><div class="pthumb pt2"></div><div class="pinfo"><div class="pname">StudyHub</div><div class="pdesc">Nền tảng học tập trực tuyến cho sinh viên.</div><div class="ptags"><span class="ptag">Next.js</span><span class="ptag">Node.js</span><span class="ptag">MongoDB</span></div></div></div>
-                            <div class="pcard"><div class="pthumb pt3"></div><div class="pinfo"><div class="pname">Event Management</div><div class="pdesc">Hệ thống quản lý sự kiện nội bộ BCN.</div><div class="ptags"><span class="ptag">React</span><span class="ptag">Firebase</span><span class="ptag">Material UI</span></div></div></div>
-                            <div class="pcard"><div class="pthumb pt4"></div><div class="pinfo"><div class="pname">AI Resume Review</div><div class="pdesc">Ứng dụng AI hỗ trợ review CV và gợi ý cải thiện.</div><div class="ptags"><span class="ptag">Python</span><span class="ptag">FastAPI</span><span class="ptag">OpenAI</span></div></div></div>
+                            <div class="pcard" data-techs="react,typescript,tailwindcss"><div class="pthumb pt1"></div><div class="pinfo"><div class="pname">BCN Portfolio Web</div><div class="pdesc">Website portfolio dành cho thành viên BCN Tech.</div><div class="ptags"><span class="ptag">React</span><span class="ptag">TypeScript</span><span class="ptag">TailwindCSS</span></div></div></div>
+                            <div class="pcard" data-techs="nextjs,nodejs,mongodb"><div class="pthumb pt2"></div><div class="pinfo"><div class="pname">StudyHub</div><div class="pdesc">Nền tảng học tập trực tuyến cho sinh viên.</div><div class="ptags"><span class="ptag">Next.js</span><span class="ptag">Node.js</span><span class="ptag">MongoDB</span></div></div></div>
+                            <div class="pcard" data-techs="react,firebase,materialui"><div class="pthumb pt3"></div><div class="pinfo"><div class="pname">Event Management</div><div class="pdesc">Hệ thống quản lý sự kiện nội bộ BCN.</div><div class="ptags"><span class="ptag">React</span><span class="ptag">Firebase</span><span class="ptag">Material UI</span></div></div></div>
+                            <div class="pcard" data-techs="python,fastapi,openai"><div class="pthumb pt4"></div><div class="pinfo"><div class="pname">AI Resume Review</div><div class="pdesc">Ứng dụng AI hỗ trợ review CV và gợi ý cải thiện.</div><div class="ptags"><span class="ptag">Python</span><span class="ptag">FastAPI</span><span class="ptag">OpenAI</span></div></div></div>
                         </div>
                         <div class="watch-all">Xem thêm</div>
                     </div>
@@ -255,6 +260,7 @@
                             </div>
                         </div>
                         <div class="watch-all">Xem thêm</div>
+                        <script src="../component/showMore.js"></script>
                     </div>
 
                     
@@ -266,6 +272,7 @@
 
     <div id="footer"></div>
     <script src="../component/footer.js"></script>
+    <script src="../component/filterProjects.js"></script>
     
 </body>
 </html>

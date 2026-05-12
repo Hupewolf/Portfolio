@@ -3,7 +3,7 @@ header {
     display: flex; 
     align-items: center; 
     justify-content: space-between;
-    padding: 0 5%; 
+    padding: 0; 
     height: 56px;
     background: rgba(250,250,248,0.85);
     backdrop-filter: blur(16px);
@@ -75,6 +75,7 @@ header .wrapper .inner-wrapper {
     height: 34px;
     border-radius: 50%;
     border: 1px solid rgb(235, 235, 235);
+    overflow: hidden;
 }
 
 .nav-actions { display: flex; gap: 8px; }
