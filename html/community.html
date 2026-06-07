@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/user.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <title>Cộng đồng</title>
+    <style>
+        /* ── Layout chung ── */
+        .community-wrap {
+            width: 100%;
+            background: #F3F3F3;
+            padding-top: 56px;
+        }
+ 
+        .community-inner {
+            margin: 0 auto;
+            width: 90%;
+            max-width: 1340px;
+            padding: 28px clamp(16px, 4vw, 40px) 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+ 
+        /* ── Section header dùng lại .ch + .ch-title ── */
+        .section-desc {
+            font-size: 12px;
+            color: var(--ink-3);
+            font-family: var(--font-b);
+            margin-top: 2px;
+        }
+ 
+        /* ── Member grid ── */
+        .member-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 14px;
+            margin-top: 16px;
+        }
+ 
+        .mcard {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            overflow: hidden;
+            text-decoration: none;
+            display: block;
+            transition: box-shadow .2s, transform .2s;
+        }
+ 
+        .mcard:hover {
+            box-shadow: 0 6px 20px rgba(0,0,0,0.09);
+            transform: translateY(-2px);
+        }
+ 
+        /* banner màu theo team */
+        .mcard-banner {
+            height: 52px;
+        }
+        .team-frontend { background: linear-gradient(135deg, #1a3a6e, #0077cc); }
+        .team-backend  { background: linear-gradient(135deg, #1a5c35, #00aa55); }
+        .team-design   { background: linear-gradient(135deg, #6b1a55, #c94499); }
+        .team-data     { background: linear-gradient(135deg, #6b4400, #d97706); }
+        .team-mobile   { background: linear-gradient(135deg, #006b8f, #0ea5e9); }
+ 
+        .mcard-body {
+            padding: 20px 16px 16px;
+            position: relative;
+        }
+ 
+        /* avatar nổi lên banner */
+        .mcard-avatar {
+            position: absolute;
+            top: -22px; left: 16px;
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            border: 3px solid white;
+            background: var(--accent-light);
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--font-d);
+            font-size: 16px; font-weight: 700;
+            color: var(--accent);
+        }
+ 
+        .mcard-name {
+            font-family: var(--font-d);
+            font-size: 13px; font-weight: 700;
+            color: var(--ink);
+            margin-top: 24px; /* chừa chỗ cho avatar */
+            display: flex; align-items: center; gap: 5px;
+        }
+ 
+        .mcard-role {
+            font-family: var(--font-m);
+            font-size: 10px;
+            color: var(--accent);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-top: 3px;
+        }
+ 
+        .mcard-bio {
+            font-size: 12px;
+            color: var(--ink-3);
+            line-height: 1.55;
+            margin-top: 7px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+ 
+        .mcard-skills {
+            display: flex; flex-wrap: wrap; gap: 4px;
+            margin-top: 10px;
+        }
+ 
+        /* tái dùng .ptag từ user.css */
+ 
+        .mcard-footer {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-top: 12px; padding-top: 10px;
+            border-top: 1px solid var(--border);
+        }
+ 
+        .mcard-proj-count {
+            font-size: 11px; color: var(--ink-3);
+            display: flex; align-items: center; gap: 3px;
+        }
+ 
+        .mcard-view {
+            font-size: 11px; font-weight: 600; color: var(--accent);
+        }
+ 
+        /* ── Team filter pills ── */
+        .team-filter {
+            display: flex; flex-wrap: wrap; gap: 7px;
+            margin-top: 12px;
+        }
+ 
+        .team-pill {
+            padding: 5px 14px;
+            border-radius: 100px;
+            font-size: 12px; font-weight: 500;
+            border: 1px solid var(--border-med);
+            background: white;
+            color: var(--ink-2);
+            cursor: pointer;
+            font-family: var(--font-b);
+            transition: background .15s, color .15s, border-color .15s;
+        }
+ 
+        .team-pill.active,
+        .team-pill:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+ 
+        /* ── Research showcase — tái dùng .pcard layout ── */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 14px;
+            margin-top: 16px;
+        }
+ 
+        /* pcard đã có sẵn trong user.css, chỉ cần thêm author row */
+        .pcard-author {
+            display: flex; align-items: center; gap: 7px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid var(--border);
+        }
+ 
+        .pcard-author-av {
+            width: 22px; height: 22px;
+            border-radius: 50%;
+            background: var(--accent-light);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 9px; font-weight: 700; color: var(--accent);
+            font-family: var(--font-d);
+            flex-shrink: 0;
+        }
+ 
+        .pcard-author-name {
+            font-size: 11px; color: var(--ink-2); font-weight: 500;
+            flex: 1; min-width: 0;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+ 
+        .pcard-featured {
+            font-size: 9px; font-weight: 700;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            color: var(--amber);
+            background: rgba(245,158,11,0.1);
+            padding: 2px 7px; border-radius: 100px;
+            flex-shrink: 0;
+        }
+ 
+        @media (max-width: 860px) {
+            .research-grid { grid-template-columns: 1fr; }
+            .member-grid   { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+        }
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+    <script src="../component/header.js"></script>
+ 
+    <div class="community-wrap">
+        <div class="community-inner">
+ 
+            <!-- ══ DANH SÁCH THÀNH VIÊN ══ -->
+            <div class="card">
+                <div class="ch">
+                    <div>
+                        <div class="ch-title">Danh Sách Thành Viên</div>
+                        <div class="section-desc" id="member-count"></div>
+                    </div>
+                </div>
+ 
+                <!-- Filter theo team -->
+                <div class="team-filter" id="teamFilter">
+                    <button class="team-pill active" data-team="all">Tất cả</button>
+                    <button class="team-pill" data-team="web">Web</button>
+                    <!-- <button class="team-pill" data-team="frontend">Frontend</button>
+                    <button class="team-pill" data-team="backend">Backend</button> -->
+                    <button class="team-pill" data-team="design">Design</button>
+                    <!-- <button class="team-pill" data-team="data">Data / AI</button> -->
+                    <button class="team-pill" data-team="mobile">Mobile</button>
+                </div>
+ 
+                <div class="member-grid" id="memberGrid"></div>
+            </div>
+ 
+            <!-- ══ SHOWCASE DỰ ÁN NGHIÊN CỨU ══ -->
+            <div class="card">
+                <div class="ch">
+                    <div>
+                        <div class="ch-title">Showcase Dự Án Nghiên Cứu</div>
+                        <div class="section-desc">Các dự án được thành viên nghiên cứu và trình bày tại BCN Tech</div>
+                    </div>
+                </div>
+                <div class="research-grid" id="researchGrid"></div>
+            </div>
+ 
+        </div>
+    </div>
+ 
+    <div id="footer"></div>
+    <script src="../component/footer.js"></script>
+ 
+    <script>
+    // ─── DỮ LIỆU THÀNH VIÊN ──────────────────────────────────────────────────
+    // Thêm / sửa thành viên tại đây
+    const members = [
+        {
+            name: "Nguyễn Ngọc Thái",
+            role: "Web Developer",
+            team: "web",
+            bio: "Đam mê phát triển sản phẩm Web với UX tốt và hiệu năng tối ưu.",
+            skills: ["React", "TypeScript", "Next.js"],
+            projects: 4,
+            initials: "NT",
+            verified: true,
+            url: "./user.html"
+        },
+        {
+            name: "Trần chụt chụt",
+            role: "Web Developer",
+            team: "web",
+            bio: "Đam mê phát triển sản phẩm Web với UX tốt và hiệu năng tối ưu.",
+            skills: ["Node.js", "GraphQL", "Docker"],
+            projects: 3,
+            initials: "cc",
+            verified: true,
+            url: "./user.html"
+        },
+        {
+            name: "Lê Thị HIHI",
+            role: "UI/UX Designer",
+            team: "design",
+            bio: "Thiết kế trải nghiệm người dùng tốt, tập trung vào accessibility và design system.",
+            skills: ["UI/UX Design"],
+            projects: 5,
+            initials: "HH",
+            verified: true,
+            url: "./user.html"
+        },
+        {
+            name: "Phạm Sú",
+            role: "Mobile Developer",
+            team: "data",
+            bio: "Xây dựng ",
+            skills: [],
+            projects: 2,
+            initials: "PS",
+            verified: false,
+            url: "./user.html"
+        },
+        {
+            name: "Võ Thanh Long",
+            role: "Mobile Developer",
+            team: "mobile",
+            bio: "Phát triển ứng dụng cross-platform với React Native, chú trọng performance.",
+            skills: ["React Native", "Flutter", "Firebase"],
+            projects: 3,
+            initials: "TL",
+            verified: true,
+            url: "./user.html"
+        },
+        {
+            name: "Đinh Thị Lan Anh",
+            role: "Frontend Developer",
+            team: "frontend",
+            bio: "Đam mê animation CSS và xây dựng UI component library tái sử dụng.",
+            skills: ["Vue.js", "TailwindCSS", "GSAP"],
+            projects: 3,
+            initials: "LA",
+            verified: true,
+            url: "./user.html"
+        },
+        {
+            name: "Nguyễn Đức Huy",
+            role: "Backend Engineer",
+            team: "backend",
+            bio: "Chuyên về bảo mật hệ thống và tối ưu hóa server-side performance.",
+            skills: ["Go", "Redis", "Kubernetes"],
+            projects: 2,
+            initials: "ĐH",
+            verified: false,
+            url: "./user.html"
+        },
+        {
+            name: "Hoàng Gia Linh",
+            role: "AI/ML Engineer",
+            team: "data",
+            bio: "Nghiên cứu và ứng dụng Large Language Models vào sản phẩm nội bộ BCN.",
+            skills: ["Python", "PyTorch", "LangChain"],
+            projects: 4,
+            initials: "GL",
+            verified: true,
+            url: "./user.html"
+        }
+    ];
+ 
+    // ─── DỮ LIỆU DỰ ÁN NGHIÊN CỨU ───────────────────────────────────────────
+    // Thêm / sửa dự án tại đây
+    const researchProjects = [
+        {
+            name: "BCN Portfolio Web",
+            desc: "Website portfolio cho phép thành viên BCN Tech trình bày CV, dự án và thành tựu cá nhân.",
+            tags: ["React", "TypeScript", "TailwindCSS"],
+            thumbClass: "pt1",
+            author: "Nguyễn Ngọc Thái",
+            authorInitials: "NT",
+            featured: true
+        },
+        {
+            name: "StudyHub",
+            desc: "Nền tảng học tập trực tuyến kết hợp AI cá nhân hóa lộ trình học, quiz và progress tracking.",
+            tags: ["Next.js", "Node.js", "MongoDB"],
+            thumbClass: "pt2",
+            author: "Trần Minh Khoa",
+            authorInitials: "MK",
+            featured: false
+        },
+        {
+            name: "AI Resume Review",
+            desc: "Phân tích CV tự động với LLM, đề xuất cải thiện theo từng ngành nghề và vị trí ứng tuyển.",
+            tags: ["Python", "FastAPI", "OpenAI"],
+            thumbClass: "pt3",
+            author: "Hoàng Gia Linh",
+            authorInitials: "GL",
+            featured: true
+        },
+        {
+            name: "Event Management",
+            desc: "Hệ thống quản lý sự kiện nội bộ BCN — đăng ký, check-in QR code, thống kê tham dự.",
+            tags: ["React", "Firebase", "Material UI"],
+            thumbClass: "pt4",
+            author: "Lê Thị Hương Giang",
+            authorInitials: "HG",
+            featured: false
+        },
+        {
+            name: "Real-time Chat App",
+            desc: "Ứng dụng chat thời gian thực hỗ trợ nhóm, file sharing và mention, xây dựng trên WebSocket.",
+            tags: ["React", "Node.js", "Socket.io"],
+            thumbClass: "pt1",
+            author: "Nguyễn Đức Huy",
+            authorInitials: "ĐH",
+            featured: false
+        },
+        {
+            name: "BCN Mobile App",
+            desc: "Ứng dụng di động tổng hợp cho cộng đồng BCN — feed bài viết, thông báo sự kiện, profile.",
+            tags: ["React Native", "Firebase", "Redux"],
+            thumbClass: "pt2",
+            author: "Võ Thanh Long",
+            authorInitials: "TL",
+            featured: false
+        }
+    ];
+ 
+    // ─── RENDER THÀNH VIÊN ────────────────────────────────────────────────────
+    function renderMembers(filterTeam) {
+        const list = filterTeam === "all"
+            ? members
+            : members.filter(m => m.team === filterTeam);
+ 
+        document.getElementById("member-count").textContent =
+            list.length + " thành viên" + (filterTeam !== "all" ? " trong team này" : " đang hoạt động");
+ 
+        document.getElementById("memberGrid").innerHTML = list.map(m => `
+            <a class="mcard" href="${m.url}">
+                <div class="mcard-banner team-${m.team}"></div>
+                <div class="mcard-body">
+                    <div class="mcard-avatar">${m.initials}</div>
+                    <div class="mcard-name">
+                        ${m.name}
+                        ${m.verified ? `<span class="verified">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                        </span>` : ""}
+                    </div>
+                    <div class="mcard-role">${m.role}</div>
+                    <div class="mcard-bio">${m.bio}</div>
+                    <div class="mcard-skills">
+                        ${m.skills.map(s => `<span class="ptag">${s}</span>`).join("")}
+                    </div>
+                    <div class="mcard-footer">
+                        <div class="mcard-proj-count">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/>
+                            </svg>
+                            ${m.projects} dự án
+                        </div>
+                        <div class="mcard-view">Xem hồ sơ →</div>
+                    </div>
+                </div>
+            </a>
+        `).join("");
+    }
+ 
+    // ─── RENDER DỰ ÁN NGHIÊN CỨU ─────────────────────────────────────────────
+    function renderResearch() {
+        document.getElementById("researchGrid").innerHTML = researchProjects.map(p => `
+            <div class="pcard">
+                <div class="pthumb ${p.thumbClass}"></div>
+                <div class="pinfo">
+                    <div class="pname">${p.name}</div>
+                    <div class="pdesc">${p.desc}</div>
+                    <div class="ptags">
+                        ${p.tags.map(t => `<span class="ptag">${t}</span>`).join("")}
+                    </div>
+                    <div class="pcard-author">
+                        <div class="pcard-author-av">${p.authorInitials}</div>
+                        <div class="pcard-author-name">${p.author}</div>
+                        ${p.featured ? `<span class="pcard-featured">★ Featured</span>` : ""}
+                    </div>
+                </div>
+            </div>
+        `).join("");
+    }
+ 
+    // ─── FILTER PILLS ─────────────────────────────────────────────────────────
+    document.getElementById("teamFilter").addEventListener("click", e => {
+        const pill = e.target.closest(".team-pill");
+        if (!pill) return;
+        document.querySelectorAll(".team-pill").forEach(p => p.classList.remove("active"));
+        pill.classList.add("active");
+        renderMembers(pill.dataset.team);
+    });
+ 
+    // ─── INIT ─────────────────────────────────────────────────────────────────
+    renderMembers("all");
+    renderResearch();
+    </script>
+</body>
+</html>

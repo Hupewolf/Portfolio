@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/citymap.css">
     <title>Trang chủ</title>
 </head>
 <body>
@@ -16,11 +17,42 @@
     <script src="./component/header.js"></script>
 
     <main>
-        
+        <section class="hero-banner">
+            <div class="hero-bg"></div>
+            <div class="hero-content container">
+                <div class="hero-label">BCN · THÀNH VIÊN</div>
+                <h1 class="hero-title">Khám phá<br><span>Thành phố</span> Portfolio</h1>
+                <p class="hero-sub">Mỗi ô là một thành viên. Kích thước phản ánh đóng góp & cấp độ.</p>
+                <div class="hero-stats">
+                    <div class="stat"><span class="stat-n" id="stat-members">0</span><span class="stat-l">thành viên</span></div>
+                    <div class="stat-div"></div>
+                    <div class="stat"><span class="stat-n">....</span><span class="stat-l">dự án</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="citymap-section">
+            <div class="citymap-header container">
+                <div class="citymap-filter-row">
+                    <button class="cf-btn active" data-filter="all">Tất cả</button>
+                    <button class="cf-btn" data-filter="Web">Web</button>
+                    <button class="cf-btn" data-filter="design">Design</button>
+                    <button class="cf-btn" data-filter="App">App</button>
+                </div>
+                <div class="citymap-legend">
+                    <span class="leg-item"><span class="leg-dot tier1"></span>cộng tác viên</span>
+                    <span class="leg-item"><span class="leg-dot tier2"></span>Thành viên</span>
+                    <span class="leg-item"><span class="leg-dot tier3"></span>Thực tập sinh</span>
+                </div>
+            </div>
+            <div class="citymap-wrap container">
+                <div class="citymap-grid" id="citymap-grid"></div>
+            </div>
+        </section>
     </main>
 
     <div id="footer"></div>
     <script src="./component/footer.js"></script>
-    
+    <script src="./component/citymap.js"></script>
 </body>
 </html>

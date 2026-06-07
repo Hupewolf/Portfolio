@@ -521,7 +521,7 @@ ul {
     display: flex;
     gap: 10px;
     position: relative;
-    z-index: 1000;
+    z-index: 50;  /* FIX: was 1000 — tạo stacking context gọn hơn, dropdown-menu nằm trong */
 }
 
 .dropdown-filter {
@@ -542,7 +542,7 @@ ul {
     pointer-events: none;
     transition: all 0.2s ease;
     position: relative;
-    z-index: 1001;
+    z-index: 51;  /* FIX: was 1001 — nằm trên outer-filter là đủ */
 }
 
 .dropdown-filter.appear {
@@ -576,7 +576,7 @@ ul {
     overflow: hidden;
     opacity: 0;
     transition: all 0.3s ease;
-    z-index: 1002;
+    z-index: 52;  /* FIX: was 1002 — trong stacking context của outer-filter, 52 là đủ cao */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     pointer-events: none;
 }
@@ -706,7 +706,8 @@ ul {
     display: flex;
     justify-content: space-between;
     position: relative;
-    z-index: 1000;
+    z-index: 10;  /* FIX: was 1000, conflict với .outer-filter/dropdown-menu. Dùng isolation thay thế */
+    isolation: isolate;
 }
 
 .proj-grid { padding: 14px 20px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
