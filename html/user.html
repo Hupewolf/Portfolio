@@ -1,319 +1,532 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/user.css">
     <link rel="stylesheet" href="../css/footer.css">
     <title>Trang chủ</title>
 </head>
+
 <body>
     <div id="header"></div>
     <script src="../component/header.js"></script>
 
     <main>
-        <div class="background-banner"></div>
-        <div class="hero-section">
-            <div class="inner-hero-section container">
-                <div class="avatar-portrait">
-                    <div class="avatar-letter"></div>
-                </div>
+        <div class="page">
+            <!-- ═══ SIDEBAR ═══ -->
+            <aside class="sidebar">
+                <a href="#" class="s-item on" onclick="activeSidebar(event,this)">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                    </svg>
+                    <div class="s-label"><b>PROFILE</b><small>Hồ sơ cá nhân</small></div>
+                </a>
+                <a href="#" class="s-item" onclick="activeSidebar(event,this)">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7" />
+                        <rect x="14" y="3" width="7" height="7" />
+                        <rect x="14" y="14" width="7" height="7" />
+                        <rect x="3" y="14" width="7" height="7" />
+                    </svg>
+                    <div class="s-label"><b>PROJECTS</b><small>Dự án tham gia</small></div>
+                </a>
+                <a href="#" class="s-item" onclick="activeSidebar(event,this)">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                    <div class="s-label"><b>ABILITY</b><small>Kỹ năng & năng lực</small></div>
+                </a>
+                <a href="#" class="s-item" onclick="activeSidebar(event,this)">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="8" r="6" />
+                        <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
+                    </svg>
+                    <div class="s-label"><b>ACHIEVEMENTS</b><small>Thành tích</small></div>
+                </a>
+                <a href="#" class="s-item" onclick="activeSidebar(event,this)">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+                    </svg>
+                    <div class="s-label"><b>MISSIONS</b><small>Nhiệm vụ</small></div>
+                </a>
 
-                <!-- Identity + actions -->
-                <div class="hero-identity">
-                    <div class="hero-team">Member — Frontend Team</div>
-                    <div class="hero-name">
-                        Nguyễn Ngọc Thái
-                        <span class="verified"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span>
+                <!-- Level block -->
+                <div class="sidebar-bottom">
+                    <div class="lv-label">Level</div>
+                    <div class="lv-num">24</div>
+                    <div class="lv-exp-label">7,850 / 10,000 EXP</div>
+                    <div class="lv-bar">
+                        <div class="lv-fill" id="lvFill"></div>
                     </div>
-                    <div class="hero-quote">"Code. Learn. Build. Repeat."</div>
-
-                    <div class="hero-meta">
-                        <div class="hero-meta-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                            2003
+                    <div class="rank-row">
+                        <div class="rank-pip">
+                            <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor">
+                                <polygon
+                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                            </svg>
                         </div>
-                        <div class="hero-meta-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-1a6 6 0 0112 0v1"/></svg>
-                            Nam
-                        </div>
-                        <div class="hero-meta-item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                            Phú Quý, Việt Nam
-                        </div>
-                    </div>
-
-                    
-
-                    <p class="hero-bio">Đam mê phát triển sản phẩm Web với UX tốt và hiệu năng tối ưu. Luôn học hỏi và không ngừng cải thiện bản thân.</p>
-                    <ul class="example-23">
-                        <!-- Mail -->
-                        <li class="icon-content">
-                            <a href="mailto:yourmail@gmail.com" aria-label="Mail" data-social="mail">
-                                <div class="filled"></div>
-                                <svg class="gmail-icon"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                    width="24"
-                                    height="24">
-
-                                    <!-- trái xanh -->
-                                    <path class="blue"
-                                        d="M3 6v12h4V9z"/>
-
-                                    <!-- phải xanh lá -->
-                                    <path class="green"
-                                        d="M17 9v9h4V6z"/>
-
-                                    <!-- M đỏ -->
-                                    <path class="red"
-                                        d="M3 6l9 7 9-7v4l-9 7-9-7z"/>
-
-                                    <!-- vàng -->
-                                    <path class="yellow"
-                                        d="M17 6v4l4-4z"/>
-                                </svg>
-
-                            </a>
-                        </li>
-
-                        <!-- GitHub -->
-                        <li class="icon-content">
-                            <a href="https://github.com/" aria-label="GitHub" data-social="github">
-                                <div class="filled"></div>
-
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                    width="16"
-                                    height="16"
-                                    fill="currentColor"
-                                    viewBox="0 0 16 16">
-
-                                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 
-                                    6.53 5.47 7.59.4.07.55-.17.55-.38 
-                                    0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94
-                                    -.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 
-                                    1.08.58 1.23.82.72 1.21 1.87.87 
-                                    2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 
-                                    0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 
-                                    0 0 .67-.21 2.2.82.64-.18 1.32-.27 
-                                    2-.27s1.36.09 2 .27c1.53-1.04 
-                                    2.2-.82 2.2-.82.44 1.1.16 1.92.08 
-                                    2.12.51.56.82 1.27.82 2.15 
-                                    0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 
-                                    1.48 0 1.07-.01 1.93-.01 2.2 
-                                    0 .21.15.46.55.38A8.01 8.01 0 0 0 16 
-                                    8c0-4.42-3.58-8-8-8"/>
-                                </svg>
-                            </a>
-                        </li>
-
-                        <!-- LinkedIn -->
-                        <li class="icon-content">
-                            <a href="https://linkedin.com/" aria-label="LinkedIn" data-social="linkedin">
-                                <div class="filled"></div>
-
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                    width="16"
-                                    height="16"
-                                    fill="currentColor"
-                                    viewBox="0 0 16 16">
-
-                                    <path d="M0 1.146C0 .513.526 0 1.175 
-                                    0h13.65C15.474 0 16 .513 16 
-                                    1.146v13.708c0 .633-.526 1.146-1.175 
-                                    1.146H1.175C.526 16 0 15.487 0 
-                                    14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 
-                                    0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 
-                                    3.226 2.4 3.934c0 .694.521 1.248 1.327 
-                                    1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 
-                                    1.232-.878.869 0 1.216.662 1.216 
-                                    1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 
-                                    0-1.845.7-2.165 1.193v.025h-.016a5.54 
-                                    5.54 0 0 1 .016-.025V6.169H6.252c.03.678 
-                                    0 7.225 0 7.225z"/>
-                                </svg>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="hero-actions">
-
+                        SILVER III
                     </div>
                 </div>
-                <div class="wrapper-hero-btn">
-                    <a href="#" class="btn-cv">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                        Tải CV
-                    </a>
-                    <button class="btn-contact">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                        Liên hệ
-                    </button>
-                    
-                </div>
-            </div>
-        </div>
-    <script src="../component/show.js"></script>
-        <div class="main">
-            <div class="main-wrap  container">
-                <div class="left-main-wrap">
-                    <div class="card">
-                        <div class="ch-title">Kỹ Năng</div>
-                        <div class="skill-body-title">Kĩ năng cứng</div>
-                        <div class="skill-body">
-                            <span class="skill-chip-wide">React</span>
-                            <span class="skill-chip-wide">TypeScript</span>
-                            <span class="skill-chip-wide">Next.js</span>
-                            <span class="skill-chip-wide">Tailwind CSS</span>
-                        </div>
-                        <div class="skill-body-title">Kĩ năng khác</div>
-                        <div class="skill-body">
-                            <span class="skill-chip-wide">Node.js</span>
-                            <span class="skill-chip-wide">MongoDB</span>
-                            <span class="skill-chip-wide">UI / UX Design</span>
-                            <span class="skill-chip-wide">DevOps</span>
-                            <span class="skill-chip-wide">API Integration</span>
-                            <span class="skill-chip-wide">Git & GitHub</span>
-                        </div>
-                        <div class="skill-body-title">Học tập</div>
-                        <div class="skill-body">
-                            <span class="skill-chip-wide">Three.js</span>
-                            <span class="skill-chip-wide">GraphQL</span>
-                            <span class="skill-chip-wide">Docker</span>
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                        <div class="ch-title">Thành tựu</div>
-                        <div class="badges-grid" id="badges-grid"></div>
-                        <script src="../component/badge.js"></script>
-                    </div>
+            </aside>
 
-                    <!-- <div class="card">
-                        <div class="ch-title">Bộ Chỉ Số Năng Lực</div>
-                        <div class="comp-body">
-                            <div class="comp-grid">
-                                <div class="cc">
-                                    <div class="cc-lbl">Kiến thức chuyên môn</div>
-                                    
-                                    <div class="ctip"><ul><li>Nắm vững kiến thức nền tảng</li><li>Áp dụng tốt vào thực tế</li><li>Chủ động nghiên cứu thêm</li></ul></div>
+            <!-- ═══ MAIN ═══ -->
+            <main class="main">
+
+                <!-- TOP ROW -->
+                <div class="top-row">
+
+                    <!-- Profile avatar card -->
+                    <div class="card profile-card anim">
+                        <div class="pc-topbar">
+                            <span>MEMBER ID: <span class="pc-id">BCN01248</span></span>
+                            <button class="pc-copy" onclick="copyId()" data-tip="Copy">
+                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" />
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="pc-avatar">
+                            <div class="pc-geo"></div>
+                            <div class="pc-hex pc-hex-3"></div>
+                            <div class="pc-hex pc-hex-2"></div>
+                            <div class="pc-hex pc-hex-1"></div>
+                            <div class="pc-excelsior">EXCELSIOR</div>
+                            <div class="pc-char">
+                                <div class="pc-char-inner"></div>
+                            </div>
+                            <div class="pc-thumbs">
+                                <div class="pc-thumb on" onclick="pickThumb(this)" data-tip="Trang phục 1">
+                                    <svg width="14px" height="14px" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M3 7L6 4H9C9 4.39397 9.0776 4.78407 9.22836 5.14805C9.37913 5.51203 9.6001 5.84274 9.87868 6.12132C10.1573 6.3999 10.488 6.62087 10.8519 6.77164C11.2159 6.9224 11.606 7 12 7C12.394 7 12.7841 6.9224 13.1481 6.77164C13.512 6.62087 13.8427 6.3999 14.1213 6.12132C14.3999 5.84274 14.6209 5.51203 14.7716 5.14805C14.9224 4.78407 15 4.39397 15 4H18L21 7L20.5 12L18 10.5V20H6V10.5L3.5 12L3 7Z"
+                                            stroke="currentColor" stroke-width="1.5" stroke-linecap="square"
+                                            stroke-linejoin="round" />
+                                    </svg>
                                 </div>
-                                <div class="cc">
-                                    <div class="cc-lbl">Làm việc nhóm</div>
-                                    
-                                    <div class="ctip"><ul><li>Phối hợp tốt với thành viên</li><li>Đóng góp tích cực trong team</li><li>Cần chủ động hơn</li></ul></div>
+                                <div class="pc-thumb" onclick="pickThumb(this)" data-tip="Trang phục 2">
+                                    <svg width="14px" height="14px" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M3 7L6 4H9C9 4.39397 9.0776 4.78407 9.22836 5.14805C9.37913 5.51203 9.6001 5.84274 9.87868 6.12132C10.1573 6.3999 10.488 6.62087 10.8519 6.77164C11.2159 6.9224 11.606 7 12 7C12.394 7 12.7841 6.9224 13.1481 6.77164C13.512 6.62087 13.8427 6.3999 14.1213 6.12132C14.3999 5.84274 14.6209 5.51203 14.7716 5.14805C14.9224 4.78407 15 4.39397 15 4H18L21 7L20.5 12L18 10.5V20H6V10.5L3.5 12L3 7Z"
+                                            stroke="currentColor" stroke-width="1.5" stroke-linecap="square"
+                                            stroke-linejoin="round" />
+                                    </svg>
                                 </div>
-                                <div class="cc">
-                                    <div class="cc-lbl">Tư duy sản phẩm</div>
-                                    
-                                    <div class="ctip"><ul><li>Tư duy user-centric tốt</li><li>Đề xuất giải pháp sáng tạo</li><li>Hiểu vòng đời sản phẩm</li></ul></div>
-                                </div>
-                                <div class="cc">
-                                    <div class="cc-lbl">Hiệu suất học tập</div>
-                                    
-                                    <div class="ctip"><ul><li>Tiến bộ đều qua các tháng</li><li>Hoàn thành đủ bài tập</li><li>Cần tự học thêm ngoài giờ</li></ul></div>
-                                </div>
-                                <div class="cc">
-                                    <div class="cc-lbl">Giải quyết vấn đề</div>
-                                    
-                                    <div class="ctip"><ul><li>Phân tích vấn đề rõ ràng</li><li>Tìm giải pháp tối ưu</li><li>Debug hiệu quả</li></ul></div>
-                                </div>
-                                <div class="cc highlight">
-                                    <div class="cc-lbl">Thái độ & Kỷ luật</div>
-                                    
-                                    <div class="ctip"><ul><li>Tham gia đầy đủ các buổi họp</li><li>Hoàn thành 100% deadline</li><li>Chủ động nhận task & hỗ trợ</li><li>Tuân thủ quy định BCN</li><li>Tinh thần trách nhiệm cao</li></ul></div>
+                                <div class="pc-thumb" onclick="pickThumb(this)" data-tip="Trang phục 3">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="1.5">
+                                        <polygon
+                                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                    </svg>
                                 </div>
                             </div>
+                            <button class="pc-viewbtn">
+                                XEM CHI TIẾT
+                                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                    <polyline points="12 5 19 12 12 19" />
+                                </svg>
+                            </button>
                         </div>
-                    </div> -->
 
-                </div>
+                        <!-- <button class="pc-settings" data-tip="Tùy chỉnh">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="3" />
+                                <path
+                                    d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" />
+                            </svg>
+                        </button> -->
+                    </div>
 
-                <div class="right-main-wrap">
-                    <div class="card" id="projects">
-                        <div class="ch">
-                            <div class="ch-title">Dự Án Đã Thực Hiện</div>
-                            <div class="outer-filter">
-                                <div class="dropdown-filter" id="techFilter">
-                                    Công nghệ
-                                    <div class="down"></div>
-                                    <div class="dropdown-menu" id="techDropdown">
-                                        <div class="dropdown-item" data-tech="all">Tất cả</div>
-                                        <div class="dropdown-item" data-tech="react">React</div>
-                                        <div class="dropdown-item" data-tech="typescript">TypeScript</div>
-                                        <div class="dropdown-item" data-tech="tailwindcss">TailwindCSS</div>
-                                        <div class="dropdown-item" data-tech="nextjs">Next.js</div>
-                                        <div class="dropdown-item" data-tech="nodejs">Node.js</div>
-                                        <div class="dropdown-item" data-tech="mongodb">MongoDB</div>
-                                        <div class="dropdown-item" data-tech="firebase">Firebase</div>
-                                        <div class="dropdown-item" data-tech="materialui">Material UI</div>
-                                        <div class="dropdown-item" data-tech="python">Python</div>
-                                        <div class="dropdown-item" data-tech="fastapi">FastAPI</div>
+                    <!-- Personal info card -->
+                    <div class="card info-card anim d1">
+                        <div class="ic-head">
+                            <div class="sec-label"><span>//</span> THÔNG TIN CÁ NHÂN</div>
+                            <div class="ic-name-row">
+                                <div>
+                                    <div class="ic-name">
+                                        Nguyễn Minh Triết
+                                        <span class="ic-verify">
+                                            <svg width="9" height="9" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="3.5">
+                                                <polyline points="20 6 9 17 4 12" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="ic-tags">
+                                        <span class="role-chip">UI/UX DESIGNER</span>
+                                        <span class="org-chip"><span class="org-dot"></span>Ban Công Nghệ</span>
                                     </div>
                                 </div>
-                                <button class="filter"><img src="../Images/Icons/basil_filter-outline.svg"></button>
+                                <!-- Faction badge — fixed inline layout -->
+                                <div class="faction-badge" data-tip="Xem faction">
+                                    <div class="faction-badge-icon">
+                                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="1.5">
+                                            <polygon
+                                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                        </svg>
+                                    </div>
+                                    <div class="faction-badge-label">FACTION</div>
+                                    <div class="faction-badge-name">BAN CÔNG<br>NGHỆ</div>
+                                </div>
                             </div>
                         </div>
-                        <div class="proj-grid">
-                            <div class="pcard" data-techs="react,typescript,tailwindcss"><div class="pthumb pt1"></div><div class="pinfo"><div class="pname">BCN Portfolio Web</div><div class="pdesc">Website portfolio dành cho thành viên BCN Tech.</div><div class="ptags"><span class="ptag">React</span><span class="ptag">TypeScript</span><span class="ptag">TailwindCSS</span></div></div></div>
-                            <div class="pcard" data-techs="nextjs,nodejs,mongodb"><div class="pthumb pt2"></div><div class="pinfo"><div class="pname">StudyHub</div><div class="pdesc">Nền tảng học tập trực tuyến cho sinh viên.</div><div class="ptags"><span class="ptag">Next.js</span><span class="ptag">Node.js</span><span class="ptag">MongoDB</span></div></div></div>
-                            <div class="pcard" data-techs="react,firebase,materialui"><div class="pthumb pt3"></div><div class="pinfo"><div class="pname">Event Management</div><div class="pdesc">Hệ thống quản lý sự kiện nội bộ BCN.</div><div class="ptags"><span class="ptag">React</span><span class="ptag">Firebase</span><span class="ptag">Material UI</span></div></div></div>
-                            <div class="pcard" data-techs="python,fastapi,openai"><div class="pthumb pt4"></div><div class="pinfo"><div class="pname">AI Resume Review</div><div class="pdesc">Ứng dụng AI hỗ trợ review CV và gợi ý cải thiện.</div><div class="ptags"><span class="ptag">Python</span><span class="ptag">FastAPI</span><span class="ptag">OpenAI</span></div></div></div>
-                        </div>
-                        <div class="watch-all">Xem thêm</div>
-                    </div>
 
-                    <div class="card">
-                        <div class="ch-title">Quá Trình Hoạt Động</div>
-                        <div class="tl-body">
-                            <div class="tl-item">
-                                <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
-                                <div>
-                                    <div class="tl-period">05/2023 — Hiện tại</div>
-                                    <div class="tl-role">Frontend Developer</div>
-                                    <div class="tl-org">BCN Tech</div>
-                                    <div class="tl-desc">Phát triển sản phẩm nội bộ và hỗ trợ các hoạt động cộng đồng của ban.</div>
-                                    <div class="tl-pills"><span class="tl-pill">Phát triển UI hệ thống Portfolio</span><span class="tl-pill">Tối ưu UX & hiệu năng</span><span class="tl-pill">Mentoring thành viên mới</span></div>
+                        <div class="info-rows">
+                            <div class="ir">
+                                <div class="ir-key">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" />
+                                        <line x1="16" y1="2" x2="16" y2="6" />
+                                        <line x1="8" y1="2" x2="8" y2="6" />
+                                        <line x1="3" y1="10" x2="21" y2="10" />
+                                    </svg>
+                                    Sinh nhật
+                                </div>
+                                <div class="ir-val">24/05/2003 <span style="color:var(--text-3);font-size:11px;">(21
+                                        tuổi)</span></div>
+                            </div>
+                            <div class="ir">
+                                <div class="ir-key">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                        <circle cx="12" cy="10" r="3" />
+                                    </svg>
+                                    Địa chỉ
+                                </div>
+                                <div class="ir-val">Đà Nẵng, Việt Nam</div>
+                            </div>
+                            <div class="ir">
+                                <div class="ir-key">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path
+                                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                        <polyline points="22,6 12,13 2,6" />
+                                    </svg>
+                                    Email
+                                </div>
+                                <div class="ir-val"><a href="mailto:minhtriet@BCN.com">minhtriet@BCN.com</a></div>
+                            </div>
+                            <div class="ir">
+                                <div class="ir-key">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path
+                                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.41 2 2 0 0 1 3.6 1.23h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                                    </svg>
+                                    Số điện thoại
+                                </div>
+                                <div class="ir-val">0123 456 789</div>
+                            </div>
+                            <div class="ir">
+                                <div class="ir-key">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <circle cx="12" cy="12" r="10" />
+                                        <polyline points="12 6 12 12 16 14" />
+                                    </svg>
+                                    Ngày gia nhập
+                                </div>
+                                <div class="ir-val">12/08/2022 <span class="official-chip">Thành viên chính thức</span>
                                 </div>
                             </div>
-                            <div class="tl-item">
-                                <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
-                                <div>
-                                    <div class="tl-period">01/2023 — 04/2023</div>
-                                    <div class="tl-role">Member</div>
-                                    <div class="tl-org">BCN Tech</div>
-                                    <div class="tl-desc">Tham gia training và đóng góp vào các dự án chung của ban.</div>
-                                    <div class="tl-pills"><span class="tl-pill">Training React cơ bản</span><span class="tl-pill">Xây dựng website sự kiện</span></div>
+                            <div class="ir">
+                                <div class="ir-key">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                    </svg>
+                                    Vai trò
                                 </div>
+                                <div class="ir-val">Thành viên chính thức</div>
                             </div>
-                            <div class="tl-item">
-                                <div class="tl-spine"><div class="tl-dot dim"></div></div>
-                                <div>
-                                    <div class="tl-period">Hoạt động ngoại khóa</div>
-                                    <div class="tl-role">Thành viên tích cực</div>
-                                    <div class="tl-desc">Tham gia workshop, hackathon và các sự kiện cộng đồng.</div>
-                                    <div class="tl-pills"><span class="tl-pill">Hackathon 2023</span><span class="tl-pill">Workshop UI/UX với industry mentor</span></div>
+                            <div class="ir">
+                                <div class="ir-key">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path
+                                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                                    </svg>
+                                    GitHub
+                                </div>
+                                <div class="ir-val"><a href="#">github.com/minhtriet</a></div>
+                            </div>
+                            <div class="ir">
+                                <div class="ir-key">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path
+                                            d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                                        <rect x="2" y="9" width="4" height="12" />
+                                        <circle cx="4" cy="4" r="2" />
+                                    </svg>
+                                    LinkedIn
+                                </div>
+                                <div class="ir-val"><a href="#">linkedin.com/in/minhtriet</a></div>
+                            </div>
+                            <div class="ir" style="align-items:flex-start;padding-top:9px;padding-bottom:11px;">
+                                <div class="ir-key" style="padding-top:1px;">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                        <polyline points="14 2 14 8 20 8" />
+                                    </svg>
+                                    Bio
+                                </div>
+                                <div class="ir-val"
+                                    style="color:var(--text-3);font-weight:400;font-size:12px;line-height:1.6;">Đam mê
+                                    thiết
+                                    kế trải nghiệm người dùng và luôn tìm kiếm sự đơn giản trong những điều phức tạp.
                                 </div>
                             </div>
                         </div>
-                        <div class="watch-all">Xem thêm</div>
-                        <script src="../component/showMore.js"></script>
-                    </div>
 
-                    
+                        <a href="#" class="story-cta">
+                            <div class="story-cta-left">
+                                <svg class="story-cta-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="1.5">
+                                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                                </svg>
+                                <div>
+                                    <div class="story-cta-title">CÂU CHUYỆN</div>
+                                    <div class="story-cta-sub">Khám phá hành trình & câu chuyện của tôi</div>
+                                </div>
+                            </div>
+                            <div class="story-cta-arrow">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5">
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                    <polyline points="12 5 19 12 12 19" />
+                                </svg>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-            </div>
+
+                <!-- MID ROW -->
+                <div class="mid-row anim d2">
+
+                    <!-- Character Info -->
+                    <div class="card">
+                        <div class="card-head">
+                            <div class="sec-label" style="margin-bottom:0;"><span>//</span> THÔNG TIN</div>
+                        </div>
+                        <div class="char-body">
+                            <div class="char-class-label">CLASS</div>
+                            <div class="char-class-name">Designer</div>
+                            <div class="char-class-sub">Guild Strategist</div>
+                            <div class="char-stats">
+                                <div>
+                                    <div class="cstat-label">LEVEL</div>
+                                    <div class="cstat-val">24</div>
+                                </div>
+                                <div>
+                                    <div class="cstat-label">RANK</div>
+                                    <div style="margin-top:4px;"><span class="silver-badge"><svg width="9" height="9"
+                                                viewBox="0 0 24 24" fill="currentColor">
+                                                <polygon
+                                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                            </svg>Silver III</span></div>
+                                </div>
+                                <div>
+                                    <div class="cstat-label">JOINED</div>
+                                    <div class="cstat-val" style="font-size:14px;">08 / 2022</div>
+                                    <div style="font-size:10px;color:var(--text-3);margin-top:1px;">1 năm 9 tháng</div>
+                                </div>
+                            </div>
+                            <svg class="char-emblem-bg" viewBox="0 0 100 100" fill="none">
+                                <polygon points="50 5 61 35 92 35 67 57 76 88 50 70 24 88 33 57 8 35 39 35"
+                                    stroke="currentColor" stroke-width="3" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Specialization -->
+                    <div class="card">
+                        <div class="card-head">
+                            <div class="sec-label" style="margin-bottom:0;"><span>//</span> CHUYÊN MÔN</div>
+                        </div>
+                        <div class="spec-body">
+                            <div class="tag-wrap">
+                                <span class="tag" onclick="toast('UI/UX Design')">UI/UX Design</span>
+                                <span class="tag" onclick="toast('Figma')">Figma</span>
+                                <span class="tag" onclick="toast('Adobe XD')">Adobe XD</span>
+                                <span class="tag" onclick="toast('Wireframing')">Wireframing</span>
+                                <span class="tag" onclick="toast('Prototyping')">Prototyping</span>
+                                <span class="tag" onclick="toast('Design System')">Design System</span>
+                                <span class="tag" onclick="toast('HTML/CSS')">HTML/CSS</span>
+                                <span class="tag" onclick="toast('JavaScript')">JavaScript</span>
+                                <span class="tag" onclick="toast('ReactJS')">ReactJS</span>
+                            </div>
+                            <div class="ts-label">// CÔNG NGHỆ</div>
+                            <div class="tech-grid">
+                                <div class="tech-item"><span class="tech-icon"></span>Figma</div>
+                                <div class="tech-item"><span class="tech-icon"></span>Adobe XD</div>
+                                <div class="tech-item"><span class="tech-icon"></span>Photoshop</div>
+                                <div class="tech-item"><span class="tech-icon"></span>React</div>
+                                <div class="tech-item"><span class="tech-icon"></span>Next.js</div>
+                                <div class="tech-item"><span class="tech-icon"></span>TypeScript</div>
+                                <div class="tech-item"><span class="tech-icon"></span>Tailwind</div>
+                                <div class="tech-item"><span class="tech-icon"></span>Git</div>
+                                <div class="tech-item"><span class="tech-icon"></span>Notion</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Achievements -->
+                    <div class="card">
+                        <div class="card-head">
+                            <div class="sec-label" style="margin-bottom:0;"><span>//</span> THÀNH TỰU</div>
+                        </div>
+                        <div class="ach-body">
+                            <div class="ach-item">
+                                <div class="ach-ico gold">
+                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="8" r="6" />
+                                        <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
+                                    </svg>
+                                </div>
+                                <div class="ach-text">
+                                    <div class="ach-title">Top 3 — Hackathon BCA 2023</div>
+                                    <div class="ach-sub">Phát triển nền tảng kết nối sinh viên</div>
+                                </div>
+                                <div class="ach-date">08/2023</div>
+                            </div>
+                            <div class="ach-item">
+                                <div class="ach-ico silver">
+                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polygon
+                                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                                    </svg>
+                                </div>
+                                <div class="ach-text">
+                                    <div class="ach-title">Best UI/UX Design</div>
+                                    <div class="ach-sub">BCN Innovation Challenge 2022</div>
+                                </div>
+                                <div class="ach-date">12/2022</div>
+                            </div>
+                            <div class="ach-item">
+                                <div class="ach-ico bronze">
+                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="8" r="6" />
+                                        <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
+                                    </svg>
+                                </div>
+                                <div class="ach-text">
+                                    <div class="ach-title">Top Contributor</div>
+                                    <div class="ach-sub">Đóng góp tích cực cho cộng đồng BCN</div>
+                                </div>
+                                <div class="ach-date">06/2023</div>
+                            </div>
+                            <div class="ach-item">
+                                <div class="ach-ico purple">
+                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path
+                                            d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+                                    </svg>
+                                </div>
+                                <div class="ach-text">
+                                    <div class="ach-title">Project Leader</div>
+                                    <div class="ach-sub">Dẫn dắt dự án BCN Website Redesign</div>
+                                </div>
+                                <div class="ach-date">03/2024</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROJECT HISTORY -->
+                <div class="card proj-card anim d3">
+                    <div class="proj-head">
+                        <div class="sec-label" style="margin-bottom:0;"><span>//</span> DỰ ÁN</div>
+                        <a href="#" class="see-all">
+                            Xem tất cả dự án
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="proj-grid">
+                        <div class="proj-item">
+                            <div class="proj-thumb" style="background:linear-gradient(135deg,#dcdce4,#c8c8d4);">
+                                <div class="proj-tag">2024</div>
+                                <div class="proj-label">BCN WEB<br>REDESIGN</div>
+                            </div>
+                            <div class="proj-name">BCN Website Redesign</div>
+                            <div class="proj-role">Lead Designer</div>
+                            <div class="proj-year">2024</div>
+                        </div>
+                        <div class="proj-item">
+                            <div class="proj-thumb" style="background:linear-gradient(135deg,#d4dce4,#c0ccda);">
+                                <div class="proj-tag">2023</div>
+                                <div class="proj-label">BCN<br>DASHBOARD</div>
+                            </div>
+                            <div class="proj-name">BCN Dashboard</div>
+                            <div class="proj-role">UI/UX Designer</div>
+                            <div class="proj-year">2023</div>
+                        </div>
+                        <div class="proj-item">
+                            <div class="proj-thumb" style="background:linear-gradient(135deg,#d8d8e0,#cacad4);">
+                                <div class="proj-tag">2023</div>
+                                <div class="proj-label">BCN<br>MOBILE APP</div>
+                            </div>
+                            <div class="proj-name">BCN Mobile App</div>
+                            <div class="proj-role">UI Designer</div>
+                            <div class="proj-year">2023</div>
+                        </div>
+                        <div class="proj-item">
+                            <div class="proj-thumb" style="background:linear-gradient(135deg,#e0dcd8,#d4d0cc);">
+                                <div class="proj-tag">2022</div>
+                                <div class="proj-label">BCN<br>BRANDING</div>
+                            </div>
+                            <div class="proj-name">BCN Branding</div>
+                            <div class="proj-role">Designer</div>
+                            <div class="proj-year">2022</div>
+                        </div>
+                    </div>
+                    <div class="proj-dots">
+                        <div class="pdot on" onclick="pickDot(this)"></div>
+                        <div class="pdot" onclick="pickDot(this)"></div>
+                        <div class="pdot" onclick="pickDot(this)"></div>
+                        <div class="pdot" onclick="pickDot(this)"></div>
+                    </div>
+                </div>
+
+            </main>
         </div>
     </main>
-    
 
-    <div id="footer"></div>
-    <script src="../component/footer.js"></script>
-    <script src="../component/filterProjects.js"></script>
-    
+
+    <!-- <div id="footer"></div>
+    <script src="../component/footer.js"></script> -->
+    <script src="../component/user.js"></script>
+
 </body>
+
 </html>

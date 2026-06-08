@@ -1,24 +1,81 @@
 document.querySelector("#header").innerHTML = `
-    <header>
-        <div class="wrapper">
-            <a href="../index.html" class="logo second-color">Port<span class="primary-color">folio</span></a>
-            <nav>
-                <a href="../index.html">Trang chủ</a>
-                <a href="../html/user.html">Hồ sơ</a>
-                <a href="../html/community.html">Cộng đồng</a>
-            </nav>
-            <div class="inner-wrapper">
-            <div class="input-container">
-                <input placeholder="Search something..." class="input" name="text" type="text">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon"><g stroke-width="0" id="SVGRepo_bgCarrier"></g><g stroke-linejoin="round" stroke-linecap="round" id="SVGRepo_tracerCarrier"></g><g id="SVGRepo_iconCarrier"> <rect fill="white"></rect> <path d="M7.25007 2.38782C8.54878 2.0992 10.1243 2 12 2C13.8757 2 15.4512 2.0992 16.7499 2.38782C18.06 2.67897 19.1488 3.176 19.9864 4.01358C20.824 4.85116 21.321 5.94002 21.6122 7.25007C21.9008 8.54878 22 10.1243 22 12C22 13.8757 21.9008 15.4512 21.6122 16.7499C21.321 18.06 20.824 19.1488 19.9864 19.9864C19.1488 20.824 18.06 21.321 16.7499 21.6122C15.4512 21.9008 13.8757 22 12 22C10.1243 22 8.54878 21.9008 7.25007 21.6122C5.94002 21.321 4.85116 20.824 4.01358 19.9864C3.176 19.1488 2.67897 18.06 2.38782 16.7499C2.0992 15.4512 2 13.8757 2 12C2 10.1243 2.0992 8.54878 2.38782 7.25007C2.67897 5.94002 3.176 4.85116 4.01358 4.01358C4.85116 3.176 5.94002 2.67897 7.25007 2.38782ZM9 11.5C9 10.1193 10.1193 9 11.5 9C12.8807 9 14 10.1193 14 11.5C14 12.8807 12.8807 14 11.5 14C10.1193 14 9 12.8807 9 11.5ZM11.5 7C9.01472 7 7 9.01472 7 11.5C7 13.9853 9.01472 16 11.5 16C12.3805 16 13.202 15.7471 13.8957 15.31L15.2929 16.7071C15.6834 17.0976 16.3166 17.0976 16.7071 16.7071C17.0976 16.3166 17.0976 15.6834 16.7071 15.2929L15.31 13.8957C15.7471 13.202 16 12.3805 16 11.5C16 9.01472 13.9853 7 11.5 7Z" clip-rule="evenodd" fill-rule="evenodd"></path> </g></svg>
+    <nav class="navbar">
+        <a href="../index.html" class="logo">
+            <div class="logo-mark">
+                BCN
             </div>
-                <div class="bell"></div>
-                <div class="avatar">
-                    <div class="avatar-letter"></div>
+            <div>
+                <div class="logo-name">BCN</div>
+                <div class="logo-sub">Ban Công Nghệ</div>
+            </div>
+        </a>
+
+        <ul class="nav-mid">
+            <li><a href="../index.html">Trang Chủ</a></li>
+            <li><a href="../html/user.html" class="active">Thành Viên</a></li>
+            <li><a href="#">Dự Án</a></li>
+            <li><a href="#">Bảng Xếp Hạng</a></li>
+            <li><a href="#">Nhiệm Vụ</a></li>
+            <li><a href="#">Sự Kiện</a></li>
+        </ul>
+
+        <div class="nav-right">
+            <button class="nav-icon-btn" data-tip="Tìm kiếm">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.35-4.35" />
+                </svg>
+            </button>
+            <button class="nav-icon-btn" data-tip="Thông báo">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                </svg>
+                <span class="dot"></span>
+            </button>
+            <button class="nav-icon-btn" data-tip="Tin nhắn">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                </svg>
+            </button>
+            <button class="nav-icon-btn" data-tip="Cài đặt">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3" />
+                    <path
+                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                </svg>
+            </button>
+            <div class="user-pill">
+                <div class="user-ava">MT</div>
+                <div>
+                    <div class="user-pill-name">MinhTriet</div>
+                    <div class="user-pill-lv">Level 24</div>
                 </div>
+                <svg class="caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <polyline points="6 9 12 15 18 9" />
+                </svg>
             </div>
         </div>
-    </header>
+    </nav>
 `;
 
+// Navbar scroll shadow
+const navbar = document.querySelector('.navbar');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) {
+        navbar.style.boxShadow = '0 2px 16px rgba(0,0,0,0.07)';
+    } else {
+        navbar.style.boxShadow = '';
+    }
+}, { passive: true });
 
+// Smooth active state for nav links
+document.querySelectorAll('.nav-mid a').forEach(a => {
+    a.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelectorAll('.nav-mid a').forEach(x => x.classList.remove('active'));
+        this.classList.add('active');
+    });
+});

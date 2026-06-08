@@ -1,0 +1,7 @@
+width: 24px;
+height: 24px;
+background-color: #8b8b8b;
+-webkit-mask: url("img/material-symbols_list-rounded.svg") no-repeat center;
+mask: url("img/material-symbols_list-rounded.svg") no-repeat center;
+-webkit-mask-size: contain;
+mask-size: contain;
