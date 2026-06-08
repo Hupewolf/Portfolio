@@ -84,3 +84,10 @@ document.querySelectorAll('.nav-mid a').forEach(link => {
     }
 });
 
+const scrollBar = document.createElement('div');
+scrollBar.className = 'scroll-progress';
+document.body.prepend(scrollBar);
+window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+    scrollBar.style.width = Math.min(pct, 100) + '%';
+}, { passive: true });

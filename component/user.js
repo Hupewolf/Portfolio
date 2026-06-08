@@ -59,17 +59,6 @@ document.querySelectorAll('.ir, .ach-item, .proj-item, .tech-item').forEach((el,
     io.observe(el);
 });
 
-// ── MICRO INTERACTIONS ──
-
-// Scroll progress bar
-const scrollBar = document.createElement('div');
-scrollBar.className = 'scroll-progress';
-document.body.prepend(scrollBar);
-window.addEventListener('scroll', () => {
-    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
-    scrollBar.style.width = Math.min(pct, 100) + '%';
-}, { passive: true });
-
 // Ripple effect on clickable cards & buttons
 function addRipple(el) {
     el.classList.add('ripple-host');

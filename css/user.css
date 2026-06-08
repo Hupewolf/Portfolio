@@ -1269,17 +1269,6 @@
 
 }
 
-.scroll-progress {
-    position: fixed;
-    top: 54px;
-    left: 0;
-    height: 2px;
-    background: var(--blue);
-    width: 0%;
-    z-index: 300;
-    transition: width 0.08s linear;
-}
-
 .s-item svg {
     transition: transform var(--trans);
 }
