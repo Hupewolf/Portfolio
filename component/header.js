@@ -12,7 +12,7 @@ document.querySelector("#header").innerHTML = `
 
         <ul class="nav-mid">
             <li><a href="../index.html">Trang Chủ</a></li>
-            <li><a href="../html/user.html" class="active">Thành Viên</a></li>
+            <li><a href="../html/user.html">Thành Viên</a></li>
             <li><a href="#">Dự Án</a></li>
             <li><a href="#">Bảng Xếp Hạng</a></li>
             <li><a href="#">Nhiệm Vụ</a></li>
@@ -61,21 +61,26 @@ document.querySelector("#header").innerHTML = `
     </nav>
 `;
 
+
 // Navbar scroll shadow
 const navbar = document.querySelector('.navbar');
 window.addEventListener('scroll', () => {
     if (window.scrollY > 10) {
         navbar.style.boxShadow = '0 2px 16px rgba(0,0,0,0.07)';
-    } else {
+    } 
+    else {
         navbar.style.boxShadow = '';
     }
 }, { passive: true });
 
-// Smooth active state for nav links
-document.querySelectorAll('.nav-mid a').forEach(a => {
-    a.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelectorAll('.nav-mid a').forEach(x => x.classList.remove('active'));
-        this.classList.add('active');
-    });
+const currentPage = window.location.pathname.split('/').pop();
+
+document.querySelectorAll('.nav-mid a').forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href || href === '#') return;
+    const fileName = href.split('/').pop();
+    if (fileName === currentPage) {
+        link.classList.add('active');
+    }
 });
+
